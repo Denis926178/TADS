@@ -5,10 +5,10 @@
 
 #include "read.h"
 
-#define ERROR_COMPILING_REG     { printf("ERROR_COMPILING_REG\n"); return 1; }
-#define ERROR_READ_NUMBER       { printf("ERROR_READ_NUMBER\n"); return 2; }
-#define ERROR_TOO_LONG          { printf("ERROR_TOO_LONG"); return 3; }
-#define ERROR_FORMAT_NUMBER     { printf("ERROR_FORMAT_NUMBER\n"); return 3; }
+#define ERROR_COMPILING_REG     { printf("ERROR_COMPILING_REG\n");      return 1; }
+#define ERROR_READ_NUMBER       { printf("ERROR_READ_NUMBER\n");        return 2; }
+#define ERROR_TOO_LONG          { printf("ERROR_TOO_LONG");             return 3; }
+#define ERROR_FORMAT_NUMBER     { printf("ERROR_FORMAT_NUMBER\n");      return 4; }
 
 int read_number(char *number, char *regular_expression, int len)
 {
