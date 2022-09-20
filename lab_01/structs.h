@@ -7,7 +7,7 @@
 
 typedef struct material_t
 {
-    int sing_mantissa;
+    int mantissa_sign;
     int mantiss[SIZE_MANTISS];
     int exp_sign;
     int exp;
@@ -16,7 +16,7 @@ typedef struct material_t
  
 typedef struct res_t
 {
-    int sing_mantissa;
+    int mantissa_sign;
     int mantiss[SIZE_RESULT];
     int exp_sign;
     int exp;
