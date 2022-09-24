@@ -20,7 +20,7 @@ int read_number(char *number, char *regular_expression, int len)
     if (code_return)
         ERROR_COMPILING_REG;
 
-    if (len == 32)
+    if (len == 33)
         printf("Input integer number:\n");
     else
         printf("Input real number:\n");

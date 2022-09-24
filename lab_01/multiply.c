@@ -49,12 +49,13 @@ void shift_mantiss_to_round(int *result_mantiss, int *result_exp)
 
 void round_mantiss(int *result_number_mantiss, int *result_number_exp, int *i)
 {
-    *(result_number_mantiss + (*i)++) = 0;
+    *(result_number_mantiss + (*i)) = 0;
+    (*i)++;
+    if (*i == SIZE_RESULT - 1)
+        (*result_number_exp)++;
+        //shift_mantiss_to_round(result_number_mantiss, result_number_exp);
  
-    if (*i == SIZE_RESULT) 
-        shift_mantiss_to_round(result_number_mantiss, result_number_exp);
- 
-    *result_number_mantiss += *i++;
+    *(result_number_mantiss + *i) += 1;
 }
 
 int multiply(material_t material_number, whole_t integer_number, res_t *result_number)
@@ -84,13 +85,14 @@ int multiply(material_t material_number, whole_t integer_number, res_t *result_n
         shift_mantiss_null_after_act(result_number->mantiss, &result_number->start, &material_number.exp);
 
     result_number->start--;
-
+    
     if (result_number->mantiss[SIZE_MANTISS - 1] >= 5)
     {
+        result_number->mantiss[SIZE_MANTISS - 1] = 0;
         result_number->mantiss[SIZE_MANTISS]++; 
         result_number->start = 30;
     }
- 
+
     i = SIZE_MANTISS;
 
     while (result_number->mantiss[i] == 10 && i < SIZE_RESULT)
@@ -103,8 +105,12 @@ int multiply(material_t material_number, whole_t integer_number, res_t *result_n
         result_number->exp++;
         result_number->start++;
     }
-    
+
     result_number->exp += SIZE_RESULT - result_number->start;
+
+    for (int i = 0; i < SIZE_MANTISS; i++)
+        if (result_number->mantiss[i] > 0)
+            result_number->start = 30;
 
     if (result_number->exp > 99999)
         ERROR_RESULT_EXP;

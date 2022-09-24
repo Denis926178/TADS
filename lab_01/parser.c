@@ -6,7 +6,8 @@
 #include "structs.h"
 #include "parser.h"
 
-#define ERROR_TOO_LARGE_EXP     6
+#define ERROR_TOO_LARGE_EXP                  { printf("Ошибка слишком большая экспонента\n");   return 6; }
+#define ERROR_TOO_LONG_MANTISS  if (i == 30) { printf("Ошибка слишком длинная мантисса\n");     return 7; }
 
 void isminus(char **temp_symbol, int *field)
 {
@@ -26,17 +27,21 @@ int parser_to_structure(char *material_number_s, char *integer_number_s, materia
     isminus(&temp_symbol, &material_number->mantissa_sign);
 
     while (strchr("e.E\0", *temp_symbol) == NULL)
+    {
+        ERROR_TOO_LONG_MANTISS;
         material_number->mantiss[SIZE_MANTISS - 1 - i++] = *(temp_symbol++) - '0';
+    }
  
     switch (*temp_symbol)
     {
         case '.':
             temp_symbol++;
- 
+    
             while (strchr("eE\0", *temp_symbol) == NULL)
             {
-                 material_number->mantiss[SIZE_MANTISS - 1 - i++] = *(temp_symbol++) - '0';
-                 exp_diff--;
+                ERROR_TOO_LONG_MANTISS;
+                material_number->mantiss[SIZE_MANTISS - 1 - i++] = *(temp_symbol++) - '0';
+                exp_diff--;
             }
             if ((*temp_symbol != 'e') && (*temp_symbol != 'E'))
                 break;
@@ -53,14 +58,10 @@ int parser_to_structure(char *material_number_s, char *integer_number_s, materia
             break;
     }
 
-    material_number->exp = material_number->exp_sign * material_number->exp + exp_diff;
-
     if (material_number->exp > 99999 || material_number->exp < -99999)
-    {
-        printf("Слишком большой размер у экпоненты\n");
-        return ERROR_TOO_LARGE_EXP;
-    }
+        ERROR_TOO_LARGE_EXP;
 
+    material_number->exp = material_number->exp_sign * material_number->exp + exp_diff;
     material_number->start = SIZE_MANTISS - i;   
     temp_symbol = integer_number_s;
     isminus(&temp_symbol, &integer_number->sign);
