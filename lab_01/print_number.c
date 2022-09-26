@@ -5,7 +5,7 @@
 #include "parser.h"
 #include "print_number.h"
 
-void print_number(res_t result_number)
+void print_number(result_t result_number)
 {
     printf("------------------------------------\n");
     printf("Result: ");

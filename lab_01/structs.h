@@ -14,14 +14,14 @@ typedef struct material_t
     int start;
 } material_t;
  
-typedef struct res_t
+typedef struct result_t
 {
     int mantissa_sign;
     int mantiss[SIZE_RESULT];
     int exp_sign;
     int exp;
     int start;
-} res_t;
+} result_t;
  
 typedef struct whole_t
 {

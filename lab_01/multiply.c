@@ -4,7 +4,7 @@
 #include "structs.h"
 #include "parser.h"
 
-#define ERROR_RESULT_EXP        { printf("Невозможно перемножить два числа\n"); return 5; }
+#define ERROR_RESULT_EXP        { printf("IMPOSSIBLE_TO_MULTIPLY_NUMBERS\n"); return 5; }
 #define LEN_NUMBER              30
 
 #define COUNT_CURRENT_DIGIT { int temp = result_number->mantiss[i + j] + material_number.mantiss[i] * (j < SIZE_INT ? integer_number.digits[j] : 0) + rest;\
@@ -58,7 +58,7 @@ void round_mantiss(int *result_number_mantiss, int *result_number_exp, int *i)
     *(result_number_mantiss + *i) += 1;
 }
 
-int multiply(material_t material_number, whole_t integer_number, res_t *result_number)
+int multiply(material_t material_number, whole_t integer_number, result_t *result_number)
 {
     int real_start = material_number.start;
     int integer_start = integer_number.start;

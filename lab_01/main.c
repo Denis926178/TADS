@@ -12,7 +12,7 @@
 
 material_t material_number = {1, { 0 }, 1, 0, 0};
 whole_t integer_number = {1, { 0 }, 0};
-res_t result_number = {1, { 0 }, 1, 0, SIZE_MANTISS};
+result_t result_number = {1, { 0 }, 1, 0, SIZE_MANTISS};
 
 int main(void)
 {

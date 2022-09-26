@@ -6,8 +6,8 @@
 #include "structs.h"
 #include "parser.h"
 
-#define ERROR_TOO_LARGE_EXP                  { printf("Ошибка слишком большая экспонента\n");   return 6; }
-#define ERROR_TOO_LONG_MANTISS  if (i == 30) { printf("Ошибка слишком длинная мантисса\n");     return 7; }
+#define ERROR_TOO_LARGE_EXP                  { printf("ERROR_TOO_LARGE_EXP\n");   return 6; }
+#define ERROR_TOO_LONG_MANTISS  if (i == 30) { printf("ERROR_TOO_LONG_MANTISS\n");     return 7; }
 
 void isminus(char **temp_symbol, int *field)
 {
@@ -68,7 +68,10 @@ int parser_to_structure(char *material_number_s, char *integer_number_s, materia
     i = 0;
  
     while (*temp_symbol != '\0')
+    {
+        ERROR_TOO_LONG_MANTISS;
         integer_number->digits[SIZE_INT - 1 - i++] = *(temp_symbol++) - '0';
+    }
 
     integer_number->start = SIZE_INT - i;
 
