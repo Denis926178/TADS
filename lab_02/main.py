@@ -1,8 +1,9 @@
 from faker import Faker
 import random
 fake = Faker()
+f = open('file.txt', "w")
 
-for _ in range(10):
+for _ in range(30):
     home = fake.bothify(text = '?', letters=["house", "dorm"])
     name = fake.first_name()
     surname = fake.last_name()
@@ -15,4 +16,5 @@ for _ in range(10):
     entry_day = (('0' + str(day)) if (day < 10) else (str(day))) + '.' + (('0' + str(month)) if (month < 10) else str(month)) + '.' + str(random.randint(1990, 2022))
     house = fake.street_suffix() + ' ' + fake.building_number() + ' ' + fake.building_number()
     dorm = str(random.randint(1, 15)) + ' ' + fake.building_number()
-    print("{:>5} {:>15} {:>15} {:>5} {:>5} {:>5} {:>20} {:>15} {:>15}".format(home, surname, name, group, gender, age, arithmetic_mean, entry_day, house if (home == "house") else dorm))
+    f.write("{:>5} {:>15} {:>15} {:>5} {:>5} {:>5} {:>20} {:>15} {:>15}\n".format(home, surname, name, group, gender, age, arithmetic_mean, entry_day, house if (home == "house") else dorm))
+    #print("{:>5} {:>15} {:>15} {:>5} {:>5} {:>5} {:>20} {:>15} {:>15}".format(home, surname, name, group, gender, age, arithmetic_mean, entry_day, house if (home == "house") else dorm))
