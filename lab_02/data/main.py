@@ -1,9 +1,9 @@
 from faker import Faker
 import random
 fake = Faker()
-f = open('file.txt', "w")
+f = open('data1.txt', "w")
 
-for _ in range(30):
+for _ in range(1):
     home = fake.bothify(text = '?', letters=["house", "dorm"])
     name = fake.first_name()
     surname = fake.last_name()
