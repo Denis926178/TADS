@@ -112,7 +112,7 @@ int multiply(material_t material_number, whole_t integer_number, result_t *resul
         if (result_number->mantiss[i] > 0)
             result_number->start = 30;
 
-    if (result_number->exp > 99999)
+    if (result_number->exp > 99999 || result_number->exp < -99999)
         ERROR_RESULT_EXP;
 
     return EXIT_SUCCESS;
