@@ -18,6 +18,9 @@ int make_table(describtion_t *array, int *counter)
     if (fscanf(f_in, "%d", counter) != 1)
         return 1;
 
+    if (*counter > 500 || *counter < 1)
+        return 2;
+
     int code_return;
     for (int i = 0; i < *counter; i++)
         if ((code_return = read_one_record(&array[i], f_in, 0)))
@@ -32,7 +35,7 @@ int add_record(describtion_t *array, int *counter)
     if (*counter > MAX_SIZE_ARRAY - 1)
         ERROR_TOO_LARGE_RECORDS;
 
-    int code_return = read_one_record(&array[*counter + 1], stdin, 1);
+    int code_return = read_one_record(&array[*counter], stdin, 1);
 
     if (code_return)
         return code_return;

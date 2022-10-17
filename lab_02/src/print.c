@@ -49,7 +49,7 @@ int print_table_in_keys(describtion_t *array, int counter)
     int number_records = 0;
 
     for (int i = 0; i < counter; i++)
-        if (strcmp(array[i].type_house, "dorm") && !compare_year(array[i].entry_day, input_year))
+        if (!strcmp(array[i].type_house, "dorm") && !compare_year(array[i].entry_day, input_year))
         {
             print_one_record(array[i], i);
             number_records++;
@@ -105,7 +105,7 @@ void print_options()
     printf("\n1  - Загрузить таблицу из файла\n");
     printf("2  - Вывести текущую таблицу на экран\n");
     printf("3  - Добавить запись в конец таблицы\n");
-    printf("4  - Удалить запись из таблицы по номеру строки\n");
+    printf("4  - Удалить записи по номеру группы\n");
     printf("5  - Вывести студентов, живующих в общежитии с годом, поступления, который укажете вы\n");
     printf("6  - отсортировать таблицу по возрасту сортировкой пузырьком\n");
     printf("7  - отсортировать таблицу по возрасту сортировкой qsort\n");
@@ -113,5 +113,19 @@ void print_options()
     printf("9  - отсортировать таблицу по возрасту сортировкой qsort с помощью таблицы ключей\n");
     printf("10 - вывести таблицу ключей\n");
     printf("11 - вывести сравнение времени сортировок\n");
+    printf("12 - напечатать таблицу с помощью таблицы ключей\n");
     printf("0 - завершить работу программы\n\n");
+}
+
+int print_in_keys(describtion_t *array, keys_t *keys, int counter)
+{
+    if (counter == 0)
+        ERROR_EMPTY_TABLE;
+    
+    print_header();
+
+    for (int i = 0; i < counter; i++)
+        print_one_record(array[keys[i].index], i);
+    
+    print_footer();
 }

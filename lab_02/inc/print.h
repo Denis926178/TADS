@@ -19,5 +19,6 @@ int print_table(describtion_t *array, int counter);
 void print_header();
 void print_footer();
 void print_options();
+int print_in_keys(describtion_t *array, keys_t *keys, int counter);
 
 #endif

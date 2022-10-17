@@ -1,10 +1,10 @@
 #include "../inc/sorts.h"
 
-void swap_ages(describtion_t a, describtion_t b)
+void swap_ages(describtion_t *a, describtion_t *b)
 {
-    describtion_t temp = a;
-    a = b;
-    b = temp;
+    describtion_t temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int bubble_sort_age(describtion_t *array, int counter)
@@ -15,16 +15,16 @@ int bubble_sort_age(describtion_t *array, int counter)
     for (int i = 0; i < counter - 1; i++)
         for (int j = 0; j < counter - i - 1; j++)
             if (array[j].age > array[j + 1].age)
-                swap_ages(array[j], array[j + 1]);
+                swap_ages(&array[j], &array[j + 1]);
 
     return EXIT_SUCCESS;
 }
 
-void swap_keys(keys_t a, keys_t b)
+void swap_keys(keys_t *a, keys_t *b)
 {
-    keys_t temp = a;
-    a = b;
-    b = temp;
+    keys_t temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int bubble_sort_keys(keys_t *keys, int counter)
@@ -35,7 +35,7 @@ int bubble_sort_keys(keys_t *keys, int counter)
     for (int i = 0; i < counter - 1; i++)
         for (int j = 0; j < counter - i - 1; j++)
             if (keys[j].age > keys[j + 1].age)
-                swap_keys(keys[j], keys[j + 1]);
+                swap_keys(&keys[j], &keys[j + 1]);
 
     return EXIT_SUCCESS;
 }

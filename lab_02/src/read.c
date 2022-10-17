@@ -88,7 +88,7 @@ int select_mode(int *mode)
     if (scanf("%d", mode) != READ_NUMBER)
         return 1;
 
-    if (*mode < 0 || *mode > 12)
+    if (*mode < 0 || *mode >= 13)
         return 2;
 
     printf("\n");

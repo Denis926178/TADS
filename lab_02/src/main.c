@@ -14,10 +14,10 @@ int main(int argc, char **argv)
     print_options();
     int counter, mode, code_return;
 
-    while ((code_return = select_mode(&mode)))
+    if ((code_return = select_mode(&mode)))
     {
-        printf("%sВы ввели неверный номер действия, введите заново опцию, которую нужно выполнить!%s\n", RED, RESET);
-        print_options();
+        printf("%sВы ввели неверный номер действия, введите заново опцию, которую нужно выполнить, программа завершится аварийно!%s\n", RED, RESET);
+        return code_return;
     }
 
     describtion_t array[MAX_SIZE_ARRAY];
@@ -55,7 +55,6 @@ int main(int argc, char **argv)
                 keys[i].age = array[i].age;
             }
             break;
-            break;
         case 5:
             code_return = print_table_in_keys(array, counter);
             break;
@@ -77,17 +76,23 @@ int main(int argc, char **argv)
         case 11:
             code_return = compare_sorts();
             break;
+        case 12:
+            code_return = print_in_keys(array, keys, counter);
+            break;
         default:
             printf("%sНеверно введен номер действия!%s\n", RED, RESET);
             break;
         }
 
+        if (code_return)
+            printf("%sПри выполнении опции произошла ошибка!%s\n", RED, RESET);
+
         print_options();
 
-        while ((code_return = select_mode(&mode)))
+        if ((code_return = select_mode(&mode)))
         {
-            printf("%sВы ввели неверный номер действия, введите заново опцию, которую нужно выполнить!%s\n", RED, RESET);
-            print_options();
+            printf("%sВы ввели неверный номер действия, введите заново опцию, которую нужно выполнить, программа завершится аварийно!%s\n", RED, RESET);
+            return code_return;
         }
     }
 
