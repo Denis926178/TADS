@@ -128,4 +128,6 @@ int print_in_keys(describtion_t *array, keys_t *keys, int counter)
         print_one_record(array[keys[i].index], i);
     
     print_footer();
+
+    return EXIT_SUCCESS;
 }
