@@ -4,7 +4,7 @@ int *allocate_arr(int n_zero)
 {
     int *arr;
 
-    arr = malloc(n_zero * sizeof(int));
+    arr = calloc(n_zero, sizeof(int));
     if (arr == NULL)
         return NULL;
     
@@ -14,7 +14,7 @@ int *allocate_arr(int n_zero)
 int **allocate_matrix(int n, int m)
 {
     int **matrix;
-    matrix = calloc(n , sizeof(int*));
+    matrix = calloc(n, sizeof(int*));
     if (!matrix)
         return NULL;
 

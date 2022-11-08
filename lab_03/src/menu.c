@@ -30,7 +30,7 @@ void print_menu(void)
 int do_actions(int key, matrix_full_t *mtr, sparse_matrix_t *mtr_spr, 
 str_matrix_t *str, sparse_matrix_t *str_spr,
 str_matrix_t *res, sparse_matrix_t *res_spr, int *flag_matrix, int *flag_str, 
-int *flag_mult, int *flag_mult_spr, clock_t *res_time, clock_t *res_time_spr, int flag_compare)
+int *flag_mult, int *flag_mult_spr, int64_t *res_time, int64_t *res_time_spr, int flag_compare)
 
 {
     int error_code = 0;
