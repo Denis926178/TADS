@@ -1,0 +1,11 @@
+10
+house            Hill            Todd    28     f    90   27.770098936730825      17.10.1993 Branch 88664 4195
+house          Martin             Joe    52     m    86    72.24036956917531      02.11.1998 Greens 2816 920
+house           Smith           Scott    96     f    41   14.700295007059527      15.12.2022 Parks 18058 232
+ dorm        Martinez     Christopher    99     m    22   23.262815836894525      06.06.2018        12 10771
+house         Edwards         Raymond    84     m    38     92.3366393000474      03.06.2013 Way 05537 50199
+ dorm           Davis          Daniel    79     m    57    17.99420483141494      22.10.2018         5 57477
+ dorm          Melton         Bradley    80     f    72    35.84052601227737      26.08.2006         5 46531
+house         Sanders          Amanda    30     m    49    51.52833699056889      14.08.2009 Island 6874 118
+ dorm          Walker            Mary    59     f   100    89.98802318888643      18.07.1996        11 93999
+house           Brown           Susan    29     f    39    53.74678659182281      26.06.2016 Cape 8093 92683
